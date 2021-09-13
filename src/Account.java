@@ -16,13 +16,44 @@ public class Account {
 	{
 		
 	}
+	
 	void make_deposit(double amount)
 	{
 		balance += amount;
 	}
+	
+	Boolean make_withdrawal(double amount)
+	{
+		if(type.equals("saving"))
+		{
+			if(balance - amount >= 0)
+			{
+				balance -= amount;
+				return true;
+			}
+			else
+				return false;
+		}
+		else
+		{
+			if(balance - amount >= -5000)
+			{
+				balance -= amount;
+				return true;
+			}
+			else
+				return false;
+		}
+	}
 	Boolean transfer_amount(double amount, Account reciever_acc)
 	{
-		
-		return true;
+		if(balance - amount >= 0)
+		{
+			balance -= amount;
+			reciever_acc.balance += amount;
+			return true;
+		}
+		else
+			return false;
 	}
 }

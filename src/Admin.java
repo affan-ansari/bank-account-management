@@ -1,6 +1,7 @@
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Scanner;
+import java.util.Vector;
 
 public class Admin {
 	
@@ -161,20 +162,42 @@ public class Admin {
 						{
 							System.out.print("Enter Amount to withdraw:\t");
 							double amount = int_scanner.nextDouble();
-							if(curr_account.type.equals("saving"))
+							Boolean success = curr_account.make_withdrawal(amount);
+							if(success)
+								System.out.print("Amount withdrawn successfully!");
+							else
+								System.out.print("Insufficient Balance!");
+						}
+						//	Transfer Amount
+						else if(operation_option == 5)
+						{
+							Account reciever_acc = null;
+							System.out.print("Please enter Account number to transfer amount:\t");
+							String reciever_acc_no= str_scanner.nextLine();
+							
+							found = false;
+							for(i = 0; i < accounts.size(); i++)
 							{
-								if(curr_account.balance - amount >= 0)
-									System.out.print("Amount withdrawn successfully!");
+								if(accounts.get(i).account_no.equals(reciever_acc_no))
+								{
+									found = true;
+									reciever_acc = accounts.get(i);
+									break;
+								}
+							}
+							
+							if(found == true)
+							{
+								System.out.print("Enter Amount to transfer:\t");
+								double amount = int_scanner.nextDouble();
+								Boolean success = curr_account.transfer_amount(amount, reciever_acc);
+								if(success)
+									System.out.print("Amount transferred successfully!");
 								else
 									System.out.print("Insufficient Balance!");
 							}
 							else
-							{
-								if(curr_account.balance - amount >= -5000)
-									System.out.print("Amount withdrawn successfully!");
-								else
-									System.out.print("Insufficient Balance!");
-							}
+								System.out.print("Account does not exist!");
 						}
 						//	Calculate Zakat
 						else if(operation_option == 5)
