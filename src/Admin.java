@@ -147,6 +147,15 @@ public class Admin {
 						//	Print statement	
 						else if(operation_option == 2)
 						{
+							Customer owner = curr_account.customer;
+							System.out.println("Name:\t" + owner.name);
+							System.out.println("Phone No: \t" + owner.phone_no);
+							System.out.println("Address:\t" + owner.address);
+							
+							System.out.println("Account No:\t" + curr_account.account_no);
+							System.out.println("Type:\t" + curr_account.type);
+							System.out.println("Created on: \t" + curr_account.date_created);
+							System.out.println("Balance :\t" + curr_account.balance);
 							
 						}
 						//	Make Deposit	
