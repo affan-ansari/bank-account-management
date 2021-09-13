@@ -200,9 +200,10 @@ public class Admin {
 								System.out.print("Account does not exist!");
 						}
 						//	Calculate Zakat
-						else if(operation_option == 5)
+						else if(operation_option == 6)
 						{
-							
+							double zakat = (curr_account.balance * 2.5) / 100.0;
+							System.out.println("Payable Zakat: " + String.valueOf(zakat));
 						}
 					}
 				}

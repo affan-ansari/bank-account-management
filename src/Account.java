@@ -6,6 +6,7 @@ public class Account {
 	LocalDate date_created = null;
 	Customer customer = null;
 	String type = null;
+	double interest = 0.0;
 	
 	double check_balance()
 	{
