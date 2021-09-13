@@ -205,10 +205,32 @@ public class Admin {
 							
 						}
 					}
-					
 				}
 				else
-					System.out.print("Account does not exist!");
+					System.out.println("Account does not exist!");
+				break;
+			}
+			case 4:{
+				if(accounts.size() > 0)
+				{
+					for(int i = 0; i < accounts.size(); i++)
+					{
+						Account account = accounts.get(i);
+						System.out.println(String.valueOf(i) + " : Account");
+						System.out.println("Account No:\t" + account.account_no);
+						System.out.println("Type:\t" + account.type);
+						System.out.println("Created on: \t" + account.date_created);
+						System.out.println("Balance :\t" + account.balance);
+						
+						Customer owner = account.customer;
+						System.out.println(String.valueOf(i) + " : Account Owner");
+						System.out.println("Name:\t" + owner.name);
+						System.out.println("Phone No: \t" + owner.phone_no);
+						System.out.println("Address:\t" + owner.address);
+					}
+				}
+				else
+					System.out.print("No accounts created!");
 				break;
 			}
 			default:
@@ -223,6 +245,7 @@ public class Admin {
 		System.out.print("1:\t Open New Account\n");
 		System.out.print("2:\t Close Account\n");
 		System.out.print("3:\t Log In to Account\n");
+		System.out.print("4:\t Display All Accounts\n");
 		System.out.print("0:\t Exit\n");
 	}
 	
